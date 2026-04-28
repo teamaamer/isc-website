@@ -95,7 +95,7 @@
             display: flex; align-items: center; justify-content: space-between;
         }
         .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-        .nav-logo img { height: 50px; width: auto; display: block; }
+        .nav-logo img { height: 90px; width: auto; display: block; }
         .nav-logo-texts { display: flex; flex-direction: column; }
         .nav-logo-name {
             font-family: 'Playfair Display', serif;
@@ -173,6 +173,12 @@
         }
 
         /* Hero photo background — very low opacity */
+        .hero-crash {
+            position: absolute; inset: 0; z-index: 1;
+            background: url('crash.png') center center / cover no-repeat;
+            opacity: 0.18;
+            pointer-events: none;
+        }
         .hero-photo {
             position: absolute; inset: 0; pointer-events: none;
             background: url('hero-bg.jpg') center center / cover no-repeat;
@@ -794,6 +800,7 @@
 <section class="hero" id="home">
     <div class="hero-photo"></div>
     <div class="hero-bg"></div>
+    <div class="hero-crash"></div>
     <div class="hero-ring hero-ring-1"></div>
     <div class="hero-ring hero-ring-2"></div>
     <div class="hero-line"></div>
