@@ -175,7 +175,7 @@
         /* Hero photo background — very low opacity */
         .hero-crash {
             position: absolute; inset: 0; z-index: 1;
-            background: url('crash2.png') center center / cover no-repeat;
+            background: url('crash3.png') center center / cover no-repeat;
             opacity: 0.55;
             pointer-events: none;
         }
@@ -676,7 +676,7 @@
         }
         .footer-logo { height: 48px; margin-bottom: 12px; display: block; }
         .footer-about {
-            font-size: 0.84rem; color: rgba(255,255,255,0.4);
+            font-size: 0.84rem; color: rgba(255,255,255,0.75);
             line-height: 1.75; max-width: 270px;
         }
         .footer-socials { display: flex; gap: 10px; margin-top: 26px; }
@@ -698,8 +698,8 @@
         }
         .footer-links { list-style: none; display: flex; flex-direction: column; gap: 11px; }
         .footer-links a {
-            color: rgba(255,255,255,0.4); text-decoration: none;
-            font-size: 0.86rem; transition: color 0.2s;
+            color: rgba(255,255,255,0.8); text-decoration: none;
+            font-size: 0.86rem; font-weight: 500; transition: color 0.2s;
         }
         .footer-links a:hover { color: var(--gold); }
         .footer-contact-row {
@@ -708,14 +708,14 @@
         .footer-contact-row i {
             color: var(--gold); font-size: 0.82rem; margin-top: 4px; flex-shrink: 0;
         }
-        .footer-contact-row span {
-            font-size: 0.84rem; color: rgba(255,255,255,0.4); line-height: 1.55;
+        .footer-contact-row span, .footer-contact-row a {
+            font-size: 0.84rem; color: rgba(255,255,255,0.85); font-weight: 500; line-height: 1.55;
         }
         .footer-bottom {
             padding: 22px 0; text-align: center;
         }
         .footer-bottom p {
-            font-size: 0.76rem; color: rgba(255,255,255,0.2); line-height: 1.6;
+            font-size: 0.76rem; color: rgba(255,255,255,0.55); line-height: 1.6;
         }
 
         /* ===========================
@@ -749,6 +749,19 @@
             .trust-bar-inner { gap: 16px; justify-content: flex-start; padding: 0 8px; }
             .trust-item:not(:last-child) { border-right: none; padding-right: 0; }
         }
+        .hero-phone-cta {
+            display: inline-flex; align-items: center; gap: 12px;
+            margin-top: 28px;
+            background: var(--gold);
+            color: var(--navy);
+            font-size: 1.45rem; font-weight: 800;
+            padding: 16px 32px; border-radius: 50px;
+            text-decoration: none; letter-spacing: 0.5px;
+            box-shadow: 0 8px 30px rgba(201,168,76,0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .hero-phone-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(201,168,76,0.55); }
+        .hero-phone-cta i { font-size: 1.2rem; }
         /* Language Switcher */
         .lang-switcher { display: flex; gap: 4px; align-items: center; margin-left: 16px; }
         .lang-btn {
@@ -832,14 +845,19 @@
                 </div>
 
                 <h1 class="hero-title" data-i18n-html="hero.title">
-                    Fighting For The<br>
-                    <em>Justice</em> You<br>
-                    Truly Deserve
+                    Had a Car Crash?<br>
+                    <em>Contact Us</em><br>
+                    Immediately
                 </h1>
 
                 <p class="hero-desc" data-i18n="hero.desc">
-                    When injury turns your life upside down, I.S.C Law Services stands firmly in your corner. Aggressive representation, proven results, and genuine care — from the very first call to the final resolution.
+                    If you were involved in a car accident, don't wait — contact us right away. I.S.C Law Services fights aggressively to get you the maximum compensation you deserve.
                 </p>
+
+                <a href="tel:+13109278388" class="hero-phone-cta">
+                    <i class="fas fa-phone"></i>
+                    <span data-i18n="hero.phone">Call or Text: (310) 927-8388</span>
+                </a>
 
                 <div class="hero-stats">
                     <div class="hero-stat">
@@ -1430,8 +1448,9 @@ const translations = {
   en: {
     'nav.services':'Services','nav.why':'Why I.S.C','nav.about':'About','nav.process':'Our Process','nav.cta':'Free Consultation',
     'hero.badge':'No Win, No Fee — Free Consultation Available',
-    'hero.title':'Fighting For The<br><em>Justice</em> You<br>Truly Deserve',
-    'hero.desc':'When injury turns your life upside down, I.S.C Law Services stands firmly in your corner. Aggressive representation, proven results, and genuine care — from the very first call to the final resolution.',
+    'hero.title':'Had a Car Crash?<br><em>Contact Us</em><br>Immediately',
+    'hero.desc':'If you were involved in a car accident, don\'t wait — contact us right away. I.S.C Law Services fights aggressively to get you the maximum compensation you deserve.',
+    'hero.phone':'Call or Text: (310) 927-8388',
     'hero.stat1':'Success Rate','hero.stat2':'Recovered','hero.stat3':'Cases Won',
     'form.avail':'Available 24 / 7','form.title':'Get Your Free Consultation','form.sub':'No obligations. No fees upfront. Speak with our team today.',
     'form.name_label':'Full Name *','form.name_ph':'Your full name','form.phone_label':'Phone Number *','form.email_label':'Email Address *',
@@ -1489,8 +1508,9 @@ const translations = {
   ar: {
     'nav.services':'الخدمات','nav.why':'لماذا I.S.C','nav.about':'من نحن','nav.process':'عمليتنا','nav.cta':'استشارة مجانية',
     'hero.badge':'لا فوز = لا رسوم — استشارة مجانية متاحة',
-    'hero.title':'نناضل من أجل<br><em>العدالة</em> التي<br>تستحقها حقاً',
-    'hero.desc':'عندما تقلب الإصابة حياتك، تقف I.S.C بحزم في صفك. تمثيل قوي، نتائج مثبتة، ورعاية حقيقية — من أول مكالمة حتى الحل النهائي.',
+    'hero.title':'تعرضت لحادث سيارة؟<br><em>تواصل معنا</em><br>فوراً',
+    'hero.desc':'إذا تعرضت لحادث سيارة، لا تنتظر — تواصل معنا الآن. I.S.C تناضل بقوة للحصول على أقصى تعويض تستحقه.',
+    'hero.phone':'اتصل أو راسل: (310) 927-8388',
     'hero.stat1':'نسبة النجاح','hero.stat2':'تم استرداده','hero.stat3':'قضايا رُبحت',
     'form.avail':'متاح 24 / 7','form.title':'احصل على استشارتك المجانية','form.sub':'لا التزامات. لا رسوم مسبقة. تحدث مع فريقنا اليوم.',
     'form.name_label':'الاسم الكامل *','form.name_ph':'اسمك الكامل','form.phone_label':'رقم الهاتف *','form.email_label':'البريد الإلكتروني *',
@@ -1548,8 +1568,9 @@ const translations = {
   es: {
     'nav.services':'Servicios','nav.why':'Por Qué I.S.C','nav.about':'Nosotros','nav.process':'Nuestro Proceso','nav.cta':'Consulta Gratis',
     'hero.badge':'Sin Victoria, Sin Honorarios — Consulta Gratuita Disponible',
-    'hero.title':'Luchando por la<br><em>Justicia</em> que<br>Realmente Mereces',
-    'hero.desc':'Cuando una lesión trastoca tu vida, I.S.C Law Services está firmemente de tu lado. Representación agresiva, resultados comprobados y atención genuina — desde la primera llamada hasta la resolución final.',
+    'hero.title':'¿Tuviste un Accidente?<br><em>Contáctanos</em><br>Inmediatamente',
+    'hero.desc':'Si estuviste involucrado en un accidente de auto, no esperes — contáctanos ahora. I.S.C Law Services lucha agresivamente para obtener la máxima compensación que mereces.',
+    'hero.phone':'Llama o Escribe: (310) 927-8388',
     'hero.stat1':'Tasa de Éxito','hero.stat2':'Recuperado','hero.stat3':'Casos Ganados',
     'form.avail':'Disponible 24 / 7','form.title':'Obtén Tu Consulta Gratuita','form.sub':'Sin obligaciones. Sin honorarios por adelantado. Habla con nuestro equipo hoy.',
     'form.name_label':'Nombre Completo *','form.name_ph':'Tu nombre completo','form.phone_label':'Número de Teléfono *','form.email_label':'Correo Electrónico *',
