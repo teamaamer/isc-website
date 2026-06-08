@@ -183,7 +183,7 @@
         /* Hero photo background — very low opacity */
         .hero-crash {
             position: absolute; inset: 0; z-index: 1;
-            background: url('crash3.png') center center / cover no-repeat;
+            background: url('crash2.png') center center / cover no-repeat;
             opacity: 0.55;
             pointer-events: none;
         }
@@ -1658,6 +1658,12 @@ function applyLang(lang) {
     const key = el.getAttribute('data-i18n-ph');
     if (t[key] !== undefined) el.setAttribute('placeholder', t[key]);
   });
+
+  // Swap hero crash image per language
+  const heroCrash = document.querySelector('.hero-crash');
+  if (heroCrash) {
+    heroCrash.style.backgroundImage = lang === 'ar' ? "url('crash3.png')" : "url('crash2.png')";
+  }
 
   // Save preference
   localStorage.setItem('lang', lang);
