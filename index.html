@@ -749,6 +749,17 @@
             .trust-bar-inner { gap: 16px; justify-content: flex-start; padding: 0 8px; }
             .trust-item:not(:last-child) { border-right: none; padding-right: 0; }
         }
+        /* Language Switcher */
+        .lang-switcher { display: flex; gap: 4px; align-items: center; margin-left: 16px; }
+        .lang-btn {
+            background: transparent; border: 1px solid rgba(255,255,255,0.25);
+            color: rgba(255,255,255,0.7); padding: 4px 9px; border-radius: 6px;
+            font-size: 0.72rem; font-weight: 600; cursor: pointer; letter-spacing: 0.5px;
+            transition: all 0.2s;
+        }
+        .lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+        .lang-btn.active { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+        body[dir="rtl"] { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; }
     </style>
 </head>
 <body>
@@ -760,11 +771,11 @@
     <button class="mobile-close-btn" id="mobileClose" aria-label="Close menu">
         <i class="fas fa-times"></i>
     </button>
-    <a href="#services">Services</a>
-    <a href="#why-us">Why Choose Us</a>
-    <a href="#about">About Us</a>
-    <a href="#process">Our Process</a>
-    <a href="#contact" style="color: var(--gold);">Free Consultation</a>
+    <a href="#services" data-i18n="nav.services">Services</a>
+    <a href="#why-us" data-i18n="nav.why">Why Choose Us</a>
+    <a href="#about" data-i18n="nav.about">About Us</a>
+    <a href="#process" data-i18n="nav.process">Our Process</a>
+    <a href="#contact" style="color: var(--gold);" data-i18n="nav.cta">Free Consultation</a>
 </div>
 
 <!-- ============================================================
@@ -781,12 +792,17 @@
                 </div>
             </a>
             <ul class="nav-menu">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#why-us">Why I.S.C</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#process">Our Process</a></li>
-                <li><a href="#contact" class="nav-cta-btn">Free Consultation</a></li>
+                <li><a href="#services" data-i18n="nav.services">Services</a></li>
+                <li><a href="#why-us" data-i18n="nav.why">Why I.S.C</a></li>
+                <li><a href="#about" data-i18n="nav.about">About</a></li>
+                <li><a href="#process" data-i18n="nav.process">Our Process</a></li>
+                <li><a href="#contact" class="nav-cta-btn" data-i18n="nav.cta">Free Consultation</a></li>
             </ul>
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="ar">AR</button>
+                <button class="lang-btn" data-lang="es">ES</button>
+            </div>
             <button class="hamburger" id="hamburger" aria-label="Open menu">
                 <span></span><span></span><span></span>
             </button>
@@ -812,31 +828,31 @@
             <div class="hero-content">
                 <div class="hero-badge">
                     <span class="hero-badge-dot"></span>
-                    No Win, No Fee &mdash; Free Consultation Available
+                    <span data-i18n="hero.badge">No Win, No Fee — Free Consultation Available</span>
                 </div>
 
-                <h1 class="hero-title">
+                <h1 class="hero-title" data-i18n-html="hero.title">
                     Fighting For The<br>
                     <em>Justice</em> You<br>
                     Truly Deserve
                 </h1>
 
-                <p class="hero-desc">
+                <p class="hero-desc" data-i18n="hero.desc">
                     When injury turns your life upside down, I.S.C Law Services stands firmly in your corner. Aggressive representation, proven results, and genuine care — from the very first call to the final resolution.
                 </p>
 
                 <div class="hero-stats">
                     <div class="hero-stat">
                         <span class="hero-stat-val" data-target="98" data-suffix="%">98%</span>
-                        <span class="hero-stat-lbl">Success Rate</span>
+                        <span class="hero-stat-lbl" data-i18n="hero.stat1">Success Rate</span>
                     </div>
                     <div class="hero-stat">
                         <span class="hero-stat-val" data-target="500" data-prefix="$" data-suffix="M+">$500M+</span>
-                        <span class="hero-stat-lbl">Recovered</span>
+                        <span class="hero-stat-lbl" data-i18n="hero.stat2">Recovered</span>
                     </div>
                     <div class="hero-stat">
                         <span class="hero-stat-val" data-target="15" data-suffix="K+">15K+</span>
-                        <span class="hero-stat-lbl">Cases Won</span>
+                        <span class="hero-stat-lbl" data-i18n="hero.stat3">Cases Won</span>
                     </div>
                 </div>
             </div>
@@ -846,10 +862,10 @@
                 <div class="form-card-head">
                     <div class="form-avail-pill">
                         <span class="avail-dot"></span>
-                        Available 24 / 7
+                        <span data-i18n="form.avail">Available 24 / 7</span>
                     </div>
-                    <h2 class="form-card-title">Get Your Free Consultation</h2>
-                    <p class="form-card-sub">No obligations. No fees upfront. Speak with our team today.</p>
+                    <h2 class="form-card-title" data-i18n="form.title">Get Your Free Consultation</h2>
+                    <p class="form-card-sub" data-i18n="form.sub">No obligations. No fees upfront. Speak with our team today.</p>
                 </div>
 
                 <form
@@ -865,49 +881,49 @@
                     <input type="hidden" name="_autoresponse" value="Thank you for contacting I.S.C Law Services. We have received your message and a member of our team will reach out to you shortly. — I.S.C Legal Team">
 
                     <div class="field-group">
-                        <label class="field-label">Full Name *</label>
-                        <input type="text" name="Full Name" class="field-input" placeholder="Your full name" required>
+                        <label class="field-label" data-i18n="form.name_label">Full Name *</label>
+                        <input type="text" name="Full Name" class="field-input" placeholder="Your full name" data-i18n-ph="form.name_ph" required>
                     </div>
 
                     <div class="field-group">
-                        <label class="field-label">Phone Number *</label>
+                        <label class="field-label" data-i18n="form.phone_label">Phone Number *</label>
                         <input type="tel" name="Phone" class="field-input" placeholder="(555) 000-0000" required>
                     </div>
 
                     <div class="field-group">
-                        <label class="field-label">Email Address *</label>
+                        <label class="field-label" data-i18n="form.email_label">Email Address *</label>
                         <input type="email" name="Email" class="field-input" placeholder="your@email.com" required>
                     </div>
 
                     <div class="field-group">
-                        <label class="field-label">Type of Case *</label>
+                        <label class="field-label" data-i18n="form.case_label">Type of Case *</label>
                         <select name="Case Type" class="field-input" required>
-                            <option value="" disabled selected>Select your case type</option>
-                            <option>Car Accident</option>
-                            <option>Truck Accident</option>
-                            <option>Motorcycle Accident</option>
-                            <option>Slip &amp; Fall</option>
-                            <option>Wrongful Death</option>
-                            <option>Premises Liability</option>
-                            <option>Brain Injury</option>
-                            <option>Rideshare Accident</option>
-                            <option>Other Injury</option>
+                            <option value="" disabled selected data-i18n="form.case_default">Select your case type</option>
+                            <option data-i18n="form.case_car">Car Accident</option>
+                            <option data-i18n="form.case_truck">Truck Accident</option>
+                            <option data-i18n="form.case_motorcycle">Motorcycle Accident</option>
+                            <option data-i18n="form.case_slip">Slip &amp; Fall</option>
+                            <option data-i18n="form.case_wrongful">Wrongful Death</option>
+                            <option data-i18n="form.case_premises">Premises Liability</option>
+                            <option data-i18n="form.case_brain">Brain Injury</option>
+                            <option data-i18n="form.case_rideshare">Rideshare Accident</option>
+                            <option data-i18n="form.case_other">Other Injury</option>
                         </select>
                     </div>
 
                     <div class="field-group">
-                        <label class="field-label">Tell Us What Happened</label>
-                        <textarea name="Message" class="field-input" placeholder="Briefly describe your situation…"></textarea>
+                        <label class="field-label" data-i18n="form.msg_label">Tell Us What Happened</label>
+                        <textarea name="Message" class="field-input" placeholder="Briefly describe your situation…" data-i18n-ph="form.msg_ph"></textarea>
                     </div>
 
                     <button type="submit" class="btn-submit">
                         <i class="fas fa-arrow-right"></i>
-                        Get Free Consultation
+                        <span data-i18n="form.submit">Get Free Consultation</span>
                     </button>
 
                     <p class="form-disclaimer">
                         <i class="fas fa-lock" style="color: var(--gold);"></i>
-                        All information is confidential &amp; protected.
+                        <span data-i18n="form.disclaimer">All information is confidential &amp; protected.</span>
                     </p>
                 </form>
             </div>
@@ -922,11 +938,11 @@
 <div class="trust-bar">
     <div class="container">
         <div class="trust-bar-inner">
-            <span class="trust-item"><i class="fas fa-shield-halved"></i> No Win, No Fee</span>
-            <span class="trust-item"><i class="fas fa-phone-volume"></i> 24/7 Availability</span>
-            <span class="trust-item"><i class="fas fa-scale-balanced"></i> Aggressive Representation</span>
-            <span class="trust-item"><i class="fas fa-bolt"></i> Fast Response Time</span>
-            <span class="trust-item"><i class="fas fa-star"></i> Proven Track Record</span>
+            <span class="trust-item"><i class="fas fa-shield-halved"></i> <span data-i18n="trust.fee">No Win, No Fee</span></span>
+            <span class="trust-item"><i class="fas fa-phone-volume"></i> <span data-i18n="trust.avail">24/7 Availability</span></span>
+            <span class="trust-item"><i class="fas fa-scale-balanced"></i> <span data-i18n="trust.rep">Aggressive Representation</span></span>
+            <span class="trust-item"><i class="fas fa-bolt"></i> <span data-i18n="trust.fast">Fast Response Time</span></span>
+            <span class="trust-item"><i class="fas fa-star"></i> <span data-i18n="trust.record">Proven Track Record</span></span>
         </div>
     </div>
 </div>
@@ -937,61 +953,61 @@
 <section class="services" id="services">
     <div class="container">
         <div class="sec-header reveal">
-            <span class="section-tag">Practice Areas</span>
-            <h2 class="section-title">We Handle Every Type of<br>Personal Injury Case</h2>
-            <p class="section-lead">Our experienced legal team is equipped for a full range of personal injury matters — combining deep expertise with relentless pursuit of maximum compensation.</p>
+            <span class="section-tag" data-i18n="svc.tag">Practice Areas</span>
+            <h2 class="section-title" data-i18n-html="svc.title">We Handle Every Type of<br>Personal Injury Case</h2>
+            <p class="section-lead" data-i18n="svc.lead">Our experienced legal team is equipped for a full range of personal injury matters — combining deep expertise with relentless pursuit of maximum compensation.</p>
         </div>
 
         <div class="services-grid">
             <div class="svc-card reveal reveal-d1">
                 <div class="svc-icon"><i class="fas fa-car-burst"></i></div>
-                <h3 class="svc-title">Car Accidents</h3>
-                <p class="svc-desc">Comprehensive representation for vehicle collision victims — from minor fender-benders to catastrophic multi-car crashes.</p>
+                <h3 class="svc-title" data-i18n="svc.car.t">Car Accidents</h3>
+                <p class="svc-desc" data-i18n="svc.car.d">Comprehensive representation for vehicle collision victims — from minor fender-benders to catastrophic multi-car crashes.</p>
             </div>
             <div class="svc-card reveal reveal-d2">
                 <div class="svc-icon"><i class="fas fa-truck"></i></div>
-                <h3 class="svc-title">Truck Accidents</h3>
-                <p class="svc-desc">Specialized legal support in complex commercial trucking cases involving severe injuries and layered liability.</p>
+                <h3 class="svc-title" data-i18n="svc.truck.t">Truck Accidents</h3>
+                <p class="svc-desc" data-i18n="svc.truck.d">Specialized legal support in complex commercial trucking cases involving severe injuries and layered liability.</p>
             </div>
             <div class="svc-card reveal reveal-d3">
                 <div class="svc-icon"><i class="fas fa-motorcycle"></i></div>
-                <h3 class="svc-title">Motorcycle Accidents</h3>
-                <p class="svc-desc">Dedicated advocacy for riders who face devastating injuries due to another party's negligence on the road.</p>
+                <h3 class="svc-title" data-i18n="svc.moto.t">Motorcycle Accidents</h3>
+                <p class="svc-desc" data-i18n="svc.moto.d">Dedicated advocacy for riders who face devastating injuries due to another party's negligence on the road.</p>
             </div>
             <div class="svc-card reveal reveal-d4">
                 <div class="svc-icon"><i class="fas fa-person-falling"></i></div>
-                <h3 class="svc-title">Slip &amp; Fall</h3>
-                <p class="svc-desc">Fighting for injured parties when property owners fail to maintain safe and adequate environments for the public.</p>
+                <h3 class="svc-title" data-i18n="svc.slip.t">Slip &amp; Fall</h3>
+                <p class="svc-desc" data-i18n="svc.slip.d">Fighting for injured parties when property owners fail to maintain safe and adequate environments for the public.</p>
             </div>
             <div class="svc-card reveal reveal-d1">
                 <div class="svc-icon"><i class="fas fa-heart-crack"></i></div>
-                <h3 class="svc-title">Wrongful Death</h3>
-                <p class="svc-desc">Compassionate yet fierce representation for families who have lost a loved one due to another's negligence.</p>
+                <h3 class="svc-title" data-i18n="svc.wrongful.t">Wrongful Death</h3>
+                <p class="svc-desc" data-i18n="svc.wrongful.d">Compassionate yet fierce representation for families who have lost a loved one due to another's negligence.</p>
             </div>
             <div class="svc-card reveal reveal-d2">
                 <div class="svc-icon"><i class="fas fa-building-shield"></i></div>
-                <h3 class="svc-title">Premises Liability</h3>
-                <p class="svc-desc">Holding property owners accountable for injuries sustained on unsafe or inadequately maintained premises.</p>
+                <h3 class="svc-title" data-i18n="svc.premises.t">Premises Liability</h3>
+                <p class="svc-desc" data-i18n="svc.premises.d">Holding property owners accountable for injuries sustained on unsafe or inadequately maintained premises.</p>
             </div>
             <div class="svc-card reveal reveal-d3">
                 <div class="svc-icon"><i class="fas fa-brain"></i></div>
-                <h3 class="svc-title">Brain Injury</h3>
-                <p class="svc-desc">Securing maximum compensation for TBI victims facing lifelong physical, cognitive, and emotional challenges.</p>
+                <h3 class="svc-title" data-i18n="svc.brain.t">Brain Injury</h3>
+                <p class="svc-desc" data-i18n="svc.brain.d">Securing maximum compensation for TBI victims facing lifelong physical, cognitive, and emotional challenges.</p>
             </div>
             <div class="svc-card reveal reveal-d4">
                 <div class="svc-icon"><i class="fas fa-taxi"></i></div>
-                <h3 class="svc-title">Rideshare Accidents</h3>
-                <p class="svc-desc">Navigating the complex liability landscape of Uber, Lyft, and other rideshare accident claims with precision.</p>
+                <h3 class="svc-title" data-i18n="svc.rideshare.t">Rideshare Accidents</h3>
+                <p class="svc-desc" data-i18n="svc.rideshare.d">Navigating the complex liability landscape of Uber, Lyft, and other rideshare accident claims with precision.</p>
             </div>
             <div class="svc-card reveal reveal-d1">
                 <div class="svc-icon"><i class="fas fa-person-walking"></i></div>
-                <h3 class="svc-title">Walking Accidents</h3>
-                <p class="svc-desc">Strong legal representation for pedestrians injured due to driver negligence, unsafe crossings, or hazardous conditions.</p>
+                <h3 class="svc-title" data-i18n="svc.walk.t">Walking Accidents</h3>
+                <p class="svc-desc" data-i18n="svc.walk.d">Strong legal representation for pedestrians injured due to driver negligence, unsafe crossings, or hazardous conditions.</p>
             </div>
             <div class="svc-card reveal reveal-d2">
                 <div class="svc-icon"><i class="fas fa-bolt"></i></div>
-                <h3 class="svc-title">Electric Scooter Accidents</h3>
-                <p class="svc-desc">Experienced advocacy for e-scooter riders and pedestrians injured in collisions involving shared electric scooters.</p>
+                <h3 class="svc-title" data-i18n="svc.scooter.t">Electric Scooter Accidents</h3>
+                <p class="svc-desc" data-i18n="svc.scooter.d">Experienced advocacy for e-scooter riders and pedestrians injured in collisions involving shared electric scooters.</p>
             </div>
         </div>
     </div>
@@ -1009,37 +1025,37 @@
 
             <!-- Left: Features -->
             <div class="why-content">
-                <span class="section-tag">Why Choose I.S.C</span>
-                <h2 class="section-title reveal">A Legal Team That Works<br>Harder For You</h2>
-                <p class="section-lead reveal">We don't just represent clients — we partner with them. Every case receives our full resources, relentless advocacy, and an unwavering commitment to results.</p>
+                <span class="section-tag" data-i18n="why.tag">Why Choose I.S.C</span>
+                <h2 class="section-title reveal" data-i18n-html="why.title">A Legal Team That Works<br>Harder For You</h2>
+                <p class="section-lead reveal" data-i18n="why.lead">We don't just represent clients — we partner with them. Every case receives our full resources, relentless advocacy, and an unwavering commitment to results.</p>
 
                 <div class="why-list">
                     <div class="why-item reveal">
                         <div class="why-icon"><i class="fas fa-gavel"></i></div>
                         <div>
-                            <h4 class="why-item-title">Aggressive Case Handling</h4>
-                            <p class="why-item-desc">We take the fight directly to insurers and opposing counsel — never settling for less than you deserve.</p>
+                            <h4 class="why-item-title" data-i18n="why.i1.t">Aggressive Case Handling</h4>
+                            <p class="why-item-desc" data-i18n="why.i1.d">We take the fight directly to insurers and opposing counsel — never settling for less than you deserve.</p>
                         </div>
                     </div>
                     <div class="why-item reveal reveal-d1">
                         <div class="why-icon"><i class="fas fa-bolt"></i></div>
                         <div>
-                            <h4 class="why-item-title">Rapid Response Team</h4>
-                            <p class="why-item-desc">Available around the clock. We move fast to preserve evidence and protect your rights from day one.</p>
+                            <h4 class="why-item-title" data-i18n="why.i2.t">Rapid Response Team</h4>
+                            <p class="why-item-desc" data-i18n="why.i2.d">Available around the clock. We move fast to preserve evidence and protect your rights from day one.</p>
                         </div>
                     </div>
                     <div class="why-item reveal reveal-d2">
                         <div class="why-icon"><i class="fas fa-user-tie"></i></div>
                         <div>
-                            <h4 class="why-item-title">Client-First Approach</h4>
-                            <p class="why-item-desc">Your case is never a file number. You receive direct communication and honest updates at every step.</p>
+                            <h4 class="why-item-title" data-i18n="why.i3.t">Client-First Approach</h4>
+                            <p class="why-item-desc" data-i18n="why.i3.d">Your case is never a file number. You receive direct communication and honest updates at every step.</p>
                         </div>
                     </div>
                     <div class="why-item reveal reveal-d3">
                         <div class="why-icon"><i class="fas fa-circle-dollar-to-slot"></i></div>
                         <div>
-                            <h4 class="why-item-title">Zero Fees Unless You Win</h4>
-                            <p class="why-item-desc">We work on contingency. No upfront costs — we only get paid when we successfully recover for you.</p>
+                            <h4 class="why-item-title" data-i18n="why.i4.t">Zero Fees Unless You Win</h4>
+                            <p class="why-item-desc" data-i18n="why.i4.d">We work on contingency. No upfront costs — we only get paid when we successfully recover for you.</p>
                         </div>
                     </div>
                 </div>
@@ -1049,19 +1065,19 @@
             <div class="stats-grid reveal">
                 <div class="stat-card">
                     <span class="stat-val" data-target="20" data-suffix="+">20+</span>
-                    <span class="stat-lbl">Years of Experience</span>
+                    <span class="stat-lbl" data-i18n="stat.years">Years of Experience</span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-val" data-target="98" data-suffix="%">98%</span>
-                    <span class="stat-lbl">Client Satisfaction</span>
+                    <span class="stat-lbl" data-i18n="stat.satisf">Client Satisfaction</span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-val" data-target="500" data-prefix="$" data-suffix="M+">$500M+</span>
-                    <span class="stat-lbl">Total Recovered</span>
+                    <span class="stat-lbl" data-i18n="stat.recov">Total Recovered</span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-val" data-target="15" data-suffix="K+">15K+</span>
-                    <span class="stat-lbl">Cases Handled</span>
+                    <span class="stat-lbl" data-i18n="stat.cases">Cases Handled</span>
                 </div>
             </div>
 
@@ -1098,37 +1114,37 @@
 
             <!-- Content -->
             <div class="about-content reveal">
-                <span class="section-tag">About I.S.C Law</span>
-                <h2 class="section-title">More Than a Law Firm —<br>Your Legal Advocate</h2>
-                <p class="section-lead">
+                <span class="section-tag" data-i18n="about.tag">About I.S.C Law</span>
+                <h2 class="section-title" data-i18n-html="about.title">More Than a Law Firm —<br>Your Legal Advocate</h2>
+                <p class="section-lead" data-i18n="about.lead">
                     I.S.C Law Services is a results-driven legal company built on a foundation of trust, precision, and relentless pursuit of justice. We combine deep legal expertise with genuine commitment to each client's wellbeing and recovery.
                 </p>
 
                 <ul class="about-checklist">
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>Specialized exclusively in personal injury law — every attorney, every resource, fully focused on your outcome.</span>
+                        <span data-i18n="about.c1">Specialized exclusively in personal injury law — every attorney, every resource, fully focused on your outcome.</span>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>Proven track record of securing multi-million dollar verdicts and settlements across all case types.</span>
+                        <span data-i18n="about.c2">Proven track record of securing multi-million dollar verdicts and settlements across all case types.</span>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>A full-service legal team including investigators, medical experts, and specialist negotiators.</span>
+                        <span data-i18n="about.c3">A full-service legal team including investigators, medical experts, and specialist negotiators.</span>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>Transparent communication — you always know where your case stands, every step of the way.</span>
+                        <span data-i18n="about.c4">Transparent communication — you always know where your case stands, every step of the way.</span>
                     </li>
                     <li>
                         <i class="fas fa-check-circle"></i>
-                        <span>We handle all paperwork, negotiations, and court filings — you focus on healing.</span>
+                        <span data-i18n="about.c5">We handle all paperwork, negotiations, and court filings — you focus on healing.</span>
                     </li>
                 </ul>
 
                 <a href="#contact" class="btn-navy">
-                    Schedule Your Free Consultation
+                    <span data-i18n="about.cta">Schedule Your Free Consultation</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -1143,31 +1159,31 @@
 <section class="process" id="process">
     <div class="container">
         <div class="sec-header reveal">
-            <span class="section-tag">Our Process</span>
-            <h2 class="section-title">From First Call to Full Recovery</h2>
-            <p class="section-lead" style="margin: 0 auto;">Four simple steps to getting the compensation you deserve — with zero stress on your end.</p>
+            <span class="section-tag" data-i18n="process.tag">Our Process</span>
+            <h2 class="section-title" data-i18n="process.title">From First Call to Full Recovery</h2>
+            <p class="section-lead" style="margin: 0 auto;" data-i18n="process.lead">Four simple steps to getting the compensation you deserve — with zero stress on your end.</p>
         </div>
 
         <div class="process-steps">
             <div class="process-step reveal reveal-d1">
                 <div class="step-number">1</div>
-                <h3 class="step-title">Free Consultation</h3>
-                <p class="step-desc">Contact us online or by phone — 24/7. We review your case at no cost and no obligation, ever.</p>
+                <h3 class="step-title" data-i18n="process.s1.t">Free Consultation</h3>
+                <p class="step-desc" data-i18n="process.s1.d">Contact us online or by phone — 24/7. We review your case at no cost and no obligation, ever.</p>
             </div>
             <div class="process-step reveal reveal-d2">
                 <div class="step-number">2</div>
-                <h3 class="step-title">Case Investigation</h3>
-                <p class="step-desc">Our team gathers evidence, consults experts, and builds a bulletproof legal strategy tailored to your case.</p>
+                <h3 class="step-title" data-i18n="process.s2.t">Case Investigation</h3>
+                <p class="step-desc" data-i18n="process.s2.d">Our team gathers evidence, consults experts, and builds a bulletproof legal strategy tailored to your case.</p>
             </div>
             <div class="process-step reveal reveal-d3">
                 <div class="step-number">3</div>
-                <h3 class="step-title">Aggressive Fight</h3>
-                <p class="step-desc">We negotiate hard with insurers and, if needed, take your case all the way to trial without hesitation.</p>
+                <h3 class="step-title" data-i18n="process.s3.t">Aggressive Fight</h3>
+                <p class="step-desc" data-i18n="process.s3.d">We negotiate hard with insurers and, if needed, take your case all the way to trial without hesitation.</p>
             </div>
             <div class="process-step reveal reveal-d4">
                 <div class="step-number">4</div>
-                <h3 class="step-title">You Get Paid</h3>
-                <p class="step-desc">We recover your maximum compensation. No win, no fee — you only pay when we deliver results.</p>
+                <h3 class="step-title" data-i18n="process.s4.t">You Get Paid</h3>
+                <p class="step-desc" data-i18n="process.s4.d">We recover your maximum compensation. No win, no fee — you only pay when we deliver results.</p>
             </div>
         </div>
     </div>
@@ -1178,17 +1194,17 @@
 ============================================================ -->
 <section class="cta-section">
     <div class="cta-inner container">
-        <span class="section-tag" style="display:block; margin-bottom:18px;">Take Action Today</span>
-        <h2 class="cta-title reveal">Don't Face This Alone.<br>We're Ready to Fight For You.</h2>
-        <p class="cta-lead reveal">Every moment counts after an injury. Let I.S.C handle the legal battle so you can focus entirely on recovery.</p>
+        <span class="section-tag" style="display:block; margin-bottom:18px;" data-i18n="cta.tag">Take Action Today</span>
+        <h2 class="cta-title reveal" data-i18n-html="cta.title">Don't Face This Alone.<br>We're Ready to Fight For You.</h2>
+        <p class="cta-lead reveal" data-i18n="cta.lead">Every moment counts after an injury. Let I.S.C handle the legal battle so you can focus entirely on recovery.</p>
         <div class="cta-btns reveal">
             <a href="#contact" class="btn-gold">
                 <i class="fas fa-calendar-check"></i>
-                Get Free Consultation
+                <span data-i18n="cta.btn1">Get Free Consultation</span>
             </a>
             <a href="tel:+13109278388" class="btn-ghost">
                 <i class="fas fa-phone-flip"></i>
-                Call Us Now — 24/7
+                <span data-i18n="cta.btn2">Call Us Now — 24/7</span>
             </a>
         </div>
     </div>
@@ -1200,9 +1216,9 @@
 <section style="padding: 80px 0; background: var(--off-white);">
     <div class="container">
         <div class="sec-header reveal" style="text-align:center; margin-bottom: 48px;">
-            <span class="section-tag">Latest Updates</span>
-            <h2 class="section-title">From Our Facebook</h2>
-            <p class="section-lead">Follow us for case updates, legal tips, and community news.</p>
+            <span class="section-tag" data-i18n="fb.tag">Latest Updates</span>
+            <h2 class="section-title" data-i18n="fb.title">From Our Facebook</h2>
+            <p class="section-lead" data-i18n="fb.lead">Follow us for case updates, legal tips, and community news.</p>
         </div>
         <div style="display:grid; grid-template-columns: repeat(3,1fr); gap: 24px; align-items: start;">
 
@@ -1252,7 +1268,7 @@
                 <img src="logo.png" alt="I.S.C" class="footer-logo" onerror="this.style.display='none'">
                 <span class="footer-brand-name">I.S.C</span>
                 <span class="footer-brand-sub">Law Services</span>
-                <p class="footer-about">
+                <p class="footer-about" data-i18n="footer.about">
                     Dedicated to fighting for injury victims with aggressive legal representation and an unwavering commitment to justice. Your recovery is our priority.
                 </p>
                 <div class="footer-socials">
@@ -1263,35 +1279,35 @@
 
             <!-- Practice Areas -->
             <div>
-                <p class="footer-col-head">Practice Areas</p>
+                <p class="footer-col-head" data-i18n="footer.areas">Practice Areas</p>
                 <ul class="footer-links">
-                    <li><a href="#services">Car Accidents</a></li>
-                    <li><a href="#services">Truck Accidents</a></li>
-                    <li><a href="#services">Motorcycle Accidents</a></li>
-                    <li><a href="#services">Slip &amp; Fall</a></li>
-                    <li><a href="#services">Wrongful Death</a></li>
-                    <li><a href="#services">Brain Injury</a></li>
-                    <li><a href="#services">Rideshare Accidents</a></li>
+                    <li><a href="#services" data-i18n="footer.car">Car Accidents</a></li>
+                    <li><a href="#services" data-i18n="footer.truck">Truck Accidents</a></li>
+                    <li><a href="#services" data-i18n="footer.moto">Motorcycle Accidents</a></li>
+                    <li><a href="#services" data-i18n="footer.slip">Slip &amp; Fall</a></li>
+                    <li><a href="#services" data-i18n="footer.wrongful">Wrongful Death</a></li>
+                    <li><a href="#services" data-i18n="footer.brain">Brain Injury</a></li>
+                    <li><a href="#services" data-i18n="footer.rideshare">Rideshare Accidents</a></li>
                 </ul>
             </div>
 
             <!-- Quick Links -->
             <div>
-                <p class="footer-col-head">Company</p>
+                <p class="footer-col-head" data-i18n="footer.company">Company</p>
                 <ul class="footer-links">
-                    <li><a href="#about">About I.S.C</a></li>
-                    <li><a href="#why-us">Why Choose Us</a></li>
-                    <li><a href="#process">Our Process</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Free Consultation</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Legal Disclaimer</a></li>
+                    <li><a href="#about" data-i18n="footer.about_l">About I.S.C</a></li>
+                    <li><a href="#why-us" data-i18n="footer.why">Why Choose Us</a></li>
+                    <li><a href="#process" data-i18n="footer.process">Our Process</a></li>
+                    <li><a href="#services" data-i18n="footer.services">Services</a></li>
+                    <li><a href="#contact" data-i18n="footer.consult">Free Consultation</a></li>
+                    <li><a href="#" data-i18n="footer.privacy">Privacy Policy</a></li>
+                    <li><a href="#" data-i18n="footer.legal">Legal Disclaimer</a></li>
                 </ul>
             </div>
 
             <!-- Contact -->
             <div>
-                <p class="footer-col-head">Contact</p>
+                <p class="footer-col-head" data-i18n="footer.contact">Contact</p>
                 <div class="footer-contact-row">
                     <i class="fas fa-phone"></i>
                     <a href="tel:+13109278388" style="color:inherit; text-decoration:none;">+1 (310) 927-8388<br><small style="opacity:.6">Available 24/7</small></a>
@@ -1306,7 +1322,7 @@
                 </div>
                 <div class="footer-contact-row">
                     <i class="fas fa-clock"></i>
-                    <span>Mon – Fri: 8am – 8pm<br>Emergency: 24 / 7</span>
+                    <span><span data-i18n="footer.hours">Mon – Fri: 8am – 8pm</span><br><span data-i18n="footer.emergency">Emergency: 24 / 7</span></span>
                 </div>
             </div>
 
@@ -1314,9 +1330,7 @@
 
         <div class="footer-bottom">
             <p>
-                &copy; 2024 I.S.C Law Services. All rights reserved. &nbsp;|&nbsp;
-                Attorney advertising. Prior results do not guarantee a similar outcome. &nbsp;|&nbsp;
-                Confidentiality protected by attorney-client privilege.
+                <span data-i18n="footer.copy">&copy; 2024 I.S.C Law Services. All rights reserved. &nbsp;|&nbsp; Attorney advertising. Prior results do not guarantee a similar outcome. &nbsp;|&nbsp; Confidentiality protected by attorney-client privilege.</span>
             </p>
         </div>
     </div>
@@ -1406,6 +1420,232 @@
         spans[1].style.opacity   = '';
         spans[2].style.transform = '';
     });
+</script>
+
+<!-- ============================================================
+     LANGUAGE SWITCHER
+============================================================ -->
+<script>
+const translations = {
+  en: {
+    'nav.services':'Services','nav.why':'Why I.S.C','nav.about':'About','nav.process':'Our Process','nav.cta':'Free Consultation',
+    'hero.badge':'No Win, No Fee — Free Consultation Available',
+    'hero.title':'Fighting For The<br><em>Justice</em> You<br>Truly Deserve',
+    'hero.desc':'When injury turns your life upside down, I.S.C Law Services stands firmly in your corner. Aggressive representation, proven results, and genuine care — from the very first call to the final resolution.',
+    'hero.stat1':'Success Rate','hero.stat2':'Recovered','hero.stat3':'Cases Won',
+    'form.avail':'Available 24 / 7','form.title':'Get Your Free Consultation','form.sub':'No obligations. No fees upfront. Speak with our team today.',
+    'form.name_label':'Full Name *','form.name_ph':'Your full name','form.phone_label':'Phone Number *','form.email_label':'Email Address *',
+    'form.case_label':'Type of Case *','form.case_default':'Select your case type','form.case_car':'Car Accident','form.case_truck':'Truck Accident',
+    'form.case_motorcycle':'Motorcycle Accident','form.case_slip':'Slip & Fall','form.case_wrongful':'Wrongful Death','form.case_premises':'Premises Liability',
+    'form.case_brain':'Brain Injury','form.case_rideshare':'Rideshare Accident','form.case_other':'Other Injury',
+    'form.msg_label':'Tell Us What Happened','form.msg_ph':'Briefly describe your situation…','form.submit':'Get Free Consultation',
+    'form.disclaimer':'All information is confidential & protected.',
+    'trust.fee':'No Win, No Fee','trust.avail':'24/7 Availability','trust.rep':'Aggressive Representation','trust.fast':'Fast Response Time','trust.record':'Proven Track Record',
+    'svc.tag':'Practice Areas','svc.title':'We Handle Every Type of<br>Personal Injury Case',
+    'svc.lead':'Our experienced legal team is equipped for a full range of personal injury matters — combining deep expertise with relentless pursuit of maximum compensation.',
+    'svc.car.t':'Car Accidents','svc.car.d':'Comprehensive representation for vehicle collision victims — from minor fender-benders to catastrophic multi-car crashes.',
+    'svc.truck.t':'Truck Accidents','svc.truck.d':'Specialized legal support in complex commercial trucking cases involving severe injuries and layered liability.',
+    'svc.moto.t':'Motorcycle Accidents','svc.moto.d':'Dedicated advocacy for riders who face devastating injuries due to another party\'s negligence on the road.',
+    'svc.slip.t':'Slip & Fall','svc.slip.d':'Fighting for injured parties when property owners fail to maintain safe and adequate environments for the public.',
+    'svc.wrongful.t':'Wrongful Death','svc.wrongful.d':'Compassionate yet fierce representation for families who have lost a loved one due to another\'s negligence.',
+    'svc.premises.t':'Premises Liability','svc.premises.d':'Holding property owners accountable for injuries sustained on unsafe or inadequately maintained premises.',
+    'svc.brain.t':'Brain Injury','svc.brain.d':'Securing maximum compensation for TBI victims facing lifelong physical, cognitive, and emotional challenges.',
+    'svc.rideshare.t':'Rideshare Accidents','svc.rideshare.d':'Navigating the complex liability landscape of Uber, Lyft, and other rideshare accident claims with precision.',
+    'svc.walk.t':'Walking Accidents','svc.walk.d':'Strong legal representation for pedestrians injured due to driver negligence, unsafe crossings, or hazardous conditions.',
+    'svc.scooter.t':'Electric Scooter Accidents','svc.scooter.d':'Experienced advocacy for e-scooter riders and pedestrians injured in collisions involving shared electric scooters.',
+    'why.tag':'Why Choose I.S.C','why.title':'A Legal Team That Works<br>Harder For You',
+    'why.lead':'We don\'t just represent clients — we partner with them. Every case receives our full resources, relentless advocacy, and an unwavering commitment to results.',
+    'why.i1.t':'Aggressive Case Handling','why.i1.d':'We take the fight directly to insurers and opposing counsel — never settling for less than you deserve.',
+    'why.i2.t':'Rapid Response Team','why.i2.d':'Available around the clock. We move fast to preserve evidence and protect your rights from day one.',
+    'why.i3.t':'Client-First Approach','why.i3.d':'Your case is never a file number. You receive direct communication and honest updates at every step.',
+    'why.i4.t':'Zero Fees Unless You Win','why.i4.d':'We work on contingency. No upfront costs — we only get paid when we successfully recover for you.',
+    'stat.years':'Years of Experience','stat.satisf':'Client Satisfaction','stat.recov':'Total Recovered','stat.cases':'Cases Handled',
+    'about.tag':'About I.S.C Law','about.title':'More Than a Law Firm —<br>Your Legal Advocate',
+    'about.lead':'I.S.C Law Services is a results-driven legal company built on a foundation of trust, precision, and relentless pursuit of justice. We combine deep legal expertise with genuine commitment to each client\'s wellbeing and recovery.',
+    'about.c1':'Specialized exclusively in personal injury law — every attorney, every resource, fully focused on your outcome.',
+    'about.c2':'Proven track record of securing multi-million dollar verdicts and settlements across all case types.',
+    'about.c3':'A full-service legal team including investigators, medical experts, and specialist negotiators.',
+    'about.c4':'Transparent communication — you always know where your case stands, every step of the way.',
+    'about.c5':'We handle all paperwork, negotiations, and court filings — you focus on healing.',
+    'about.cta':'Schedule Your Free Consultation',
+    'process.tag':'Our Process','process.title':'From First Call to Full Recovery','process.lead':'Four simple steps to getting the compensation you deserve — with zero stress on your end.',
+    'process.s1.t':'Free Consultation','process.s1.d':'Contact us online or by phone — 24/7. We review your case at no cost and no obligation, ever.',
+    'process.s2.t':'Case Investigation','process.s2.d':'Our team gathers evidence, consults experts, and builds a bulletproof legal strategy tailored to your case.',
+    'process.s3.t':'Aggressive Fight','process.s3.d':'We negotiate hard with insurers and, if needed, take your case all the way to trial without hesitation.',
+    'process.s4.t':'You Get Paid','process.s4.d':'We recover your maximum compensation. No win, no fee — you only pay when we deliver results.',
+    'cta.tag':'Take Action Today','cta.title':'Don\'t Face This Alone.<br>We\'re Ready to Fight For You.',
+    'cta.lead':'Every moment counts after an injury. Let I.S.C handle the legal battle so you can focus entirely on recovery.',
+    'cta.btn1':'Get Free Consultation','cta.btn2':'Call Us Now — 24/7',
+    'fb.tag':'Latest Updates','fb.title':'From Our Facebook','fb.lead':'Follow us for case updates, legal tips, and community news.',
+    'footer.about':'Dedicated to fighting for injury victims with aggressive legal representation and an unwavering commitment to justice. Your recovery is our priority.',
+    'footer.areas':'Practice Areas','footer.company':'Company','footer.contact':'Contact',
+    'footer.car':'Car Accidents','footer.truck':'Truck Accidents','footer.moto':'Motorcycle Accidents','footer.slip':'Slip & Fall',
+    'footer.wrongful':'Wrongful Death','footer.brain':'Brain Injury','footer.rideshare':'Rideshare Accidents',
+    'footer.about_l':'About I.S.C','footer.why':'Why Choose Us','footer.process':'Our Process','footer.services':'Services',
+    'footer.consult':'Free Consultation','footer.privacy':'Privacy Policy','footer.legal':'Legal Disclaimer',
+    'footer.hours':'Mon – Fri: 8am – 8pm','footer.emergency':'Emergency: 24 / 7',
+    'footer.copy':'© 2024 I.S.C Law Services. All rights reserved. | Attorney advertising. Prior results do not guarantee a similar outcome. | Confidentiality protected by attorney-client privilege.'
+  },
+  ar: {
+    'nav.services':'الخدمات','nav.why':'لماذا I.S.C','nav.about':'من نحن','nav.process':'عمليتنا','nav.cta':'استشارة مجانية',
+    'hero.badge':'لا فوز = لا رسوم — استشارة مجانية متاحة',
+    'hero.title':'نناضل من أجل<br><em>العدالة</em> التي<br>تستحقها حقاً',
+    'hero.desc':'عندما تقلب الإصابة حياتك، تقف I.S.C بحزم في صفك. تمثيل قوي، نتائج مثبتة، ورعاية حقيقية — من أول مكالمة حتى الحل النهائي.',
+    'hero.stat1':'نسبة النجاح','hero.stat2':'تم استرداده','hero.stat3':'قضايا رُبحت',
+    'form.avail':'متاح 24 / 7','form.title':'احصل على استشارتك المجانية','form.sub':'لا التزامات. لا رسوم مسبقة. تحدث مع فريقنا اليوم.',
+    'form.name_label':'الاسم الكامل *','form.name_ph':'اسمك الكامل','form.phone_label':'رقم الهاتف *','form.email_label':'البريد الإلكتروني *',
+    'form.case_label':'نوع القضية *','form.case_default':'اختر نوع قضيتك','form.case_car':'حادث سيارة','form.case_truck':'حادث شاحنة',
+    'form.case_motorcycle':'حادث دراجة نارية','form.case_slip':'انزلاق وسقوط','form.case_wrongful':'وفاة ناتجة عن إهمال','form.case_premises':'مسؤولية المبنى',
+    'form.case_brain':'إصابة في الدماغ','form.case_rideshare':'حادث مشاركة الركوب','form.case_other':'إصابة أخرى',
+    'form.msg_label':'أخبرنا بما حدث','form.msg_ph':'اصف موقفك باختصار...','form.submit':'احصل على استشارة مجانية',
+    'form.disclaimer':'جميع المعلومات سرية ومحمية.',
+    'trust.fee':'لا فوز = لا رسوم','trust.avail':'متاح 24/7','trust.rep':'تمثيل قوي','trust.fast':'استجابة سريعة','trust.record':'سجل حافل بالنجاحات',
+    'svc.tag':'مجالات الممارسة','svc.title':'نتعامل مع كل أنواع<br>قضايا الإصابة الشخصية',
+    'svc.lead':'فريقنا القانوني المتمرس مجهز لمجموعة كاملة من قضايا الإصابة الشخصية — بخبرة عميقة وسعي دؤوب للحصول على أقصى تعويض.',
+    'svc.car.t':'حوادث السيارات','svc.car.d':'تمثيل شامل لضحايا تصادمات السيارات — من الحوادث البسيطة إلى الكارثية.',
+    'svc.truck.t':'حوادث الشاحنات','svc.truck.d':'دعم قانوني متخصص في قضايا الشاحنات التجارية المعقدة ذات الإصابات البالغة والمسؤوليات المتعددة.',
+    'svc.moto.t':'حوادث الدراجات النارية','svc.moto.d':'مناصرة مخصصة للسائقين الذين يعانون إصابات خطيرة بسبب إهمال طرف آخر.',
+    'svc.slip.t':'الانزلاق والسقوط','svc.slip.d':'الدفاع عن المصابين حين يفشل أصحاب العقارات في توفير بيئات آمنة للعامة.',
+    'svc.wrongful.t':'الوفاة بسبب الإهمال','svc.wrongful.d':'تمثيل رحيم وحازم للعائلات التي فقدت أحد أحبائها بسبب إهمال الغير.',
+    'svc.premises.t':'مسؤولية المبنى','svc.premises.d':'محاسبة أصحاب العقارات على الإصابات في الأماكن غير الآمنة أو المهملة.',
+    'svc.brain.t':'إصابات الدماغ','svc.brain.d':'تأمين أقصى تعويض لضحايا إصابات الدماغ الذين يواجهون تحديات جسدية ومعرفية وعاطفية مدى الحياة.',
+    'svc.rideshare.t':'حوادث مشاركة الركوب','svc.rideshare.d':'التعامل مع المشهد القانوني المعقد لمطالبات حوادث أوبر وليفت وغيرها بدقة.',
+    'svc.walk.t':'حوادث المشاة','svc.walk.d':'تمثيل قانوني قوي للمشاة المصابين بسبب إهمال السائقين أو ظروف الطريق الخطرة.',
+    'svc.scooter.t':'حوادث السكوتر الكهربائي','svc.scooter.d':'مناصرة متمرسة لضحايا حوادث السكوتر الكهربائي المشترك.',
+    'why.tag':'لماذا تختار I.S.C','why.title':'فريق قانوني يعمل<br>بجد أكبر من أجلك',
+    'why.lead':'نحن لا نمثل العملاء فحسب — بل نشاركهم. كل قضية تحظى بكامل مواردنا ومناصرتنا الدؤوبة والتزامنا الراسخ بالنتائج.',
+    'why.i1.t':'تعامل قوي مع القضايا','why.i1.d':'نأخذ المعركة مباشرة إلى شركات التأمين والمحامين المقابلين — ولا نقبل أبداً بأقل مما تستحق.',
+    'why.i2.t':'فريق استجابة سريع','why.i2.d':'متاح على مدار الساعة. نتحرك بسرعة للحفاظ على الأدلة وحماية حقوقك منذ اليوم الأول.',
+    'why.i3.t':'نهج يضع العميل أولاً','why.i3.d':'قضيتك ليست مجرد رقم ملف. ستتلقى تواصلاً مباشراً وتحديثات صادقة في كل خطوة.',
+    'why.i4.t':'لا رسوم إلا عند الفوز','why.i4.d':'نعمل بنظام الطوارئ. لا تكاليف مسبقة — ندفع فقط عندما ننجح في استرداد حقوقك.',
+    'stat.years':'سنوات من الخبرة','stat.satisf':'رضا العملاء','stat.recov':'إجمالي ما تم استرداده','stat.cases':'القضايا التي تمت معالجتها',
+    'about.tag':'عن I.S.C Law','about.title':'أكثر من مكتب قانوني —<br>مناصرك القانوني',
+    'about.lead':'I.S.C Law Services شركة قانونية مدفوعة بالنتائج مبنية على أساس من الثقة والدقة والسعي الدؤوب للعدالة. نجمع بين الخبرة القانونية العميقة والالتزام الحقيقي بسلامة كل عميل وتعافيه.',
+    'about.c1':'متخصصون حصرياً في قانون الإصابات الشخصية — كل محامٍ، كل مورد، مركّز تماماً على نتيجتك.',
+    'about.c2':'سجل مثبت في تأمين أحكام وتسويات بملايين الدولارات عبر جميع أنواع القضايا.',
+    'about.c3':'فريق قانوني متكامل يضم محققين وخبراء طبيين ومفاوضين متخصصين.',
+    'about.c4':'تواصل شفاف — أنت تعرف دائماً أين تقف قضيتك، في كل خطوة على الطريق.',
+    'about.c5':'نتعامل مع كل الأوراق والتفاوض والتقديمات القضائية — أنت تركز على التعافي.',
+    'about.cta':'حدد استشارتك المجانية',
+    'process.tag':'عمليتنا','process.title':'من أول مكالمة إلى الاسترداد الكامل','process.lead':'أربع خطوات بسيطة للحصول على التعويض الذي تستحقه — بدون أي ضغط من جانبك.',
+    'process.s1.t':'استشارة مجانية','process.s1.d':'تواصل معنا عبر الإنترنت أو الهاتف — 24/7. نراجع قضيتك دون تكلفة أو التزام.',
+    'process.s2.t':'التحقيق في القضية','process.s2.d':'يجمع فريقنا الأدلة ويستشير الخبراء ويبني استراتيجية قانونية محكمة مصممة لقضيتك.',
+    'process.s3.t':'النضال القوي','process.s3.d':'نتفاوض بقوة مع شركات التأمين، وإذا لزم، نأخذ قضيتك إلى المحاكمة دون تردد.',
+    'process.s4.t':'تحصل على حقك','process.s4.d':'نسترد أقصى تعويض لك. لا فوز = لا رسوم — لا تدفع إلا عندما نحقق النتائج.',
+    'cta.tag':'تصرف الآن','cta.title':'لا تواجه هذا وحدك.<br>نحن مستعدون للنضال من أجلك.',
+    'cta.lead':'كل لحظة مهمة بعد الإصابة. دع I.S.C تتولى المعركة القانونية حتى تتمكن من التركيز على تعافيك.',
+    'cta.btn1':'احصل على استشارة مجانية','cta.btn2':'اتصل بنا الآن — 24/7',
+    'fb.tag':'آخر الأخبار','fb.title':'من صفحتنا على فيسبوك','fb.lead':'تابعنا للحصول على تحديثات القضايا والنصائح القانونية وأخبار المجتمع.',
+    'footer.about':'نكرس جهدنا للدفاع عن ضحايا الإصابات بتمثيل قانوني قوي والتزام راسخ بالعدالة. تعافيك هو أولويتنا.',
+    'footer.areas':'مجالات الممارسة','footer.company':'الشركة','footer.contact':'التواصل',
+    'footer.car':'حوادث السيارات','footer.truck':'حوادث الشاحنات','footer.moto':'حوادث الدراجات','footer.slip':'الانزلاق والسقوط',
+    'footer.wrongful':'الوفاة بسبب الإهمال','footer.brain':'إصابات الدماغ','footer.rideshare':'حوادث مشاركة الركوب',
+    'footer.about_l':'عن I.S.C','footer.why':'لماذا تختارنا','footer.process':'عمليتنا','footer.services':'الخدمات',
+    'footer.consult':'استشارة مجانية','footer.privacy':'سياسة الخصوصية','footer.legal':'إخلاء المسؤولية القانونية',
+    'footer.hours':'الاثنين – الجمعة: 8ص – 8م','footer.emergency':'طوارئ: 24 / 7',
+    'footer.copy':'© 2024 I.S.C Law Services. جميع الحقوق محفوظة. | إعلان محامين. النتائج السابقة لا تضمن نتيجة مماثلة. | السرية محمية بموجب الامتياز المهني.'
+  },
+  es: {
+    'nav.services':'Servicios','nav.why':'Por Qué I.S.C','nav.about':'Nosotros','nav.process':'Nuestro Proceso','nav.cta':'Consulta Gratis',
+    'hero.badge':'Sin Victoria, Sin Honorarios — Consulta Gratuita Disponible',
+    'hero.title':'Luchando por la<br><em>Justicia</em> que<br>Realmente Mereces',
+    'hero.desc':'Cuando una lesión trastoca tu vida, I.S.C Law Services está firmemente de tu lado. Representación agresiva, resultados comprobados y atención genuina — desde la primera llamada hasta la resolución final.',
+    'hero.stat1':'Tasa de Éxito','hero.stat2':'Recuperado','hero.stat3':'Casos Ganados',
+    'form.avail':'Disponible 24 / 7','form.title':'Obtén Tu Consulta Gratuita','form.sub':'Sin obligaciones. Sin honorarios por adelantado. Habla con nuestro equipo hoy.',
+    'form.name_label':'Nombre Completo *','form.name_ph':'Tu nombre completo','form.phone_label':'Número de Teléfono *','form.email_label':'Correo Electrónico *',
+    'form.case_label':'Tipo de Caso *','form.case_default':'Selecciona el tipo de caso','form.case_car':'Accidente de Auto','form.case_truck':'Accidente de Camión',
+    'form.case_motorcycle':'Accidente de Motocicleta','form.case_slip':'Resbalón y Caída','form.case_wrongful':'Muerte por Negligencia','form.case_premises':'Responsabilidad de Inmueble',
+    'form.case_brain':'Lesión Cerebral','form.case_rideshare':'Accidente de Rideshare','form.case_other':'Otra Lesión',
+    'form.msg_label':'Cuéntanos Qué Pasó','form.msg_ph':'Describe brevemente tu situación...','form.submit':'Obtener Consulta Gratuita',
+    'form.disclaimer':'Toda la información es confidencial y está protegida.',
+    'trust.fee':'Sin Victoria, Sin Honorarios','trust.avail':'Disponible 24/7','trust.rep':'Representación Agresiva','trust.fast':'Respuesta Rápida','trust.record':'Historial Comprobado',
+    'svc.tag':'Áreas de Práctica','svc.title':'Manejamos Todo Tipo de<br>Caso de Lesión Personal',
+    'svc.lead':'Nuestro equipo legal experimentado está preparado para una amplia gama de casos de lesiones personales — combinando experiencia profunda con búsqueda incansable de la máxima compensación.',
+    'svc.car.t':'Accidentes de Auto','svc.car.d':'Representación integral para víctimas de colisiones vehiculares — desde choques menores hasta accidentes catastróficos.',
+    'svc.truck.t':'Accidentes de Camión','svc.truck.d':'Apoyo legal especializado en casos complejos de camiones comerciales con lesiones graves y responsabilidad múltiple.',
+    'svc.moto.t':'Accidentes de Motocicleta','svc.moto.d':'Defensa dedicada para conductores que sufren lesiones devastadoras por negligencia de otra parte en la carretera.',
+    'svc.slip.t':'Resbalón y Caída','svc.slip.d':'Luchando por lesionados cuando los dueños de propiedades no mantienen entornos seguros para el público.',
+    'svc.wrongful.t':'Muerte por Negligencia','svc.wrongful.d':'Representación compasiva pero firme para familias que han perdido a un ser querido por negligencia ajena.',
+    'svc.premises.t':'Responsabilidad de Inmueble','svc.premises.d':'Haciendo responsables a los dueños de propiedades por lesiones en locales inseguros o mal mantenidos.',
+    'svc.brain.t':'Lesión Cerebral','svc.brain.d':'Asegurando la máxima compensación para víctimas de TCE que enfrentan desafíos físicos, cognitivos y emocionales de por vida.',
+    'svc.rideshare.t':'Accidentes de Rideshare','svc.rideshare.d':'Navegando el complejo panorama de responsabilidad en reclamos de accidentes de Uber, Lyft y otros con precisión.',
+    'svc.walk.t':'Accidentes de Peatones','svc.walk.d':'Representación legal sólida para peatones lesionados por negligencia del conductor, cruces inseguros o condiciones peligrosas.',
+    'svc.scooter.t':'Accidentes de Scooter Eléctrico','svc.scooter.d':'Defensa experta para conductores de scooter eléctrico y peatones lesionados en colisiones con scooters compartidos.',
+    'why.tag':'Por Qué Elegir I.S.C','why.title':'Un Equipo Legal que Trabaja<br>Más Duro Para Ti',
+    'why.lead':'No solo representamos clientes — nos asociamos con ellos. Cada caso recibe todos nuestros recursos, defensa incansable y un compromiso inquebrantable con los resultados.',
+    'why.i1.t':'Manejo Agresivo de Casos','why.i1.d':'Llevamos la lucha directamente a las aseguradoras y abogados contrarios — nunca conformándonos con menos de lo que mereces.',
+    'why.i2.t':'Equipo de Respuesta Rápida','why.i2.d':'Disponible las 24 horas. Actuamos rápido para preservar evidencia y proteger tus derechos desde el primer día.',
+    'why.i3.t':'Enfoque Centrado en el Cliente','why.i3.d':'Tu caso nunca es un número de expediente. Recibes comunicación directa y actualizaciones honestas en cada paso.',
+    'why.i4.t':'Sin Honorarios Hasta Ganar','why.i4.d':'Trabajamos en contingencia. Sin costos por adelantado — solo cobramos cuando recuperamos exitosamente para ti.',
+    'stat.years':'Años de Experiencia','stat.satisf':'Satisfacción del Cliente','stat.recov':'Total Recuperado','stat.cases':'Casos Manejados',
+    'about.tag':'Sobre I.S.C Law','about.title':'Más que un Despacho Legal —<br>Tu Defensor Legal',
+    'about.lead':'I.S.C Law Services es una firma legal orientada a resultados, construida sobre una base de confianza, precisión y búsqueda incansable de la justicia. Combinamos profunda experiencia legal con un compromiso genuino con el bienestar y recuperación de cada cliente.',
+    'about.c1':'Especializados exclusivamente en lesiones personales — cada abogado, cada recurso, totalmente enfocado en tu resultado.',
+    'about.c2':'Historial comprobado de obtener veredictos y acuerdos millonarios en todos los tipos de casos.',
+    'about.c3':'Equipo legal completo que incluye investigadores, expertos médicos y negociadores especializados.',
+    'about.c4':'Comunicación transparente — siempre sabes dónde está tu caso, en cada paso del camino.',
+    'about.c5':'Manejamos todo el papeleo, negociaciones y presentaciones judiciales — tú te enfocas en sanar.',
+    'about.cta':'Agenda Tu Consulta Gratuita',
+    'process.tag':'Nuestro Proceso','process.title':'De la Primera Llamada a la Recuperación Total','process.lead':'Cuatro pasos simples para obtener la compensación que mereces — sin estrés de tu parte.',
+    'process.s1.t':'Consulta Gratuita','process.s1.d':'Contáctanos en línea o por teléfono — 24/7. Revisamos tu caso sin costo ni obligación.',
+    'process.s2.t':'Investigación del Caso','process.s2.d':'Nuestro equipo reúne evidencia, consulta expertos y construye una estrategia legal sólida adaptada a tu caso.',
+    'process.s3.t':'Lucha Agresiva','process.s3.d':'Negociamos duramente con las aseguradoras y, si es necesario, llevamos tu caso hasta el juicio sin vacilar.',
+    'process.s4.t':'Cobras Tu Compensación','process.s4.d':'Recuperamos tu máxima compensación. Sin victoria, sin honorarios — solo pagas cuando entregamos resultados.',
+    'cta.tag':'Actúa Hoy','cta.title':'No Enfrentes Esto Solo.<br>Estamos Listos para Luchar por Ti.',
+    'cta.lead':'Cada momento cuenta después de una lesión. Deja que I.S.C maneje la batalla legal para que puedas enfocarte totalmente en tu recuperación.',
+    'cta.btn1':'Obtener Consulta Gratuita','cta.btn2':'Llámanos Ahora — 24/7',
+    'fb.tag':'Últimas Noticias','fb.title':'Desde Nuestro Facebook','fb.lead':'Síguenos para actualizaciones de casos, consejos legales y noticias de la comunidad.',
+    'footer.about':'Dedicados a luchar por víctimas de lesiones con representación legal agresiva y un compromiso inquebrantable con la justicia. Tu recuperación es nuestra prioridad.',
+    'footer.areas':'Áreas de Práctica','footer.company':'Empresa','footer.contact':'Contacto',
+    'footer.car':'Accidentes de Auto','footer.truck':'Accidentes de Camión','footer.moto':'Accidentes de Moto','footer.slip':'Resbalón y Caída',
+    'footer.wrongful':'Muerte por Negligencia','footer.brain':'Lesión Cerebral','footer.rideshare':'Accidentes de Rideshare',
+    'footer.about_l':'Sobre I.S.C','footer.why':'Por Qué Elegirnos','footer.process':'Nuestro Proceso','footer.services':'Servicios',
+    'footer.consult':'Consulta Gratuita','footer.privacy':'Política de Privacidad','footer.legal':'Aviso Legal',
+    'footer.hours':'Lun – Vie: 8am – 8pm','footer.emergency':'Emergencias: 24 / 7',
+    'footer.copy':'© 2024 I.S.C Law Services. Todos los derechos reservados. | Publicidad de abogado. Los resultados anteriores no garantizan un resultado similar. | Confidencialidad protegida por el privilegio abogado-cliente.'
+  }
+};
+
+function applyLang(lang) {
+  const t = translations[lang];
+  const isRTL = lang === 'ar';
+  document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+  document.documentElement.setAttribute('lang', lang);
+
+  // Text elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+
+  // HTML elements (contain <br>, <em> etc.)
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // Placeholders
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    if (t[key] !== undefined) el.setAttribute('placeholder', t[key]);
+  });
+
+  // Save preference
+  localStorage.setItem('lang', lang);
+
+  // Update buttons
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+}
+
+// Init
+const savedLang = localStorage.getItem('lang') || 'en';
+applyLang(savedLang);
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+});
 </script>
 
 </body>
